@@ -48,8 +48,8 @@ app.post("/create-checkout-session", async(req, res) => {
 		line_items: lineItems,
 		phone_number_collection: {enabled: true},
 		mode: "payment",
-		success_url: "http://localhost:3000/payment-successful",
-		cancel_url: "http://localhost:3000/payment-cancel"
+		success_url: "https://greeftechnologies.netlify.app//payment-successful",
+		cancel_url: "https://greeftechnologies.netlify.app//payment-cancel"
 	})
 	console.log(session)
 	res.json({id: session.id})
