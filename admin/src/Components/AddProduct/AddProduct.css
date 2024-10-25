@@ -1,0 +1,135 @@
+.add-product {
+	border: 2px solid black;
+	height: 28em;
+	width: 58.8em;
+	border-radius: 8px;
+	background-color: blanchedalmond;
+	box-shadow: 10px 10px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+	padding: 1.5em 2em;
+}
+
+.addproduct-itemfield .product-title {
+	width: 100%;
+	height: 2.5em;
+	padding-left: 0.5em;
+	border: 1.5px solid gray;
+}
+
+.description {
+	width: 100%;
+	border: 1.5px solid gray;
+	padding: 0.3em;
+}
+
+.addproduct-price {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5em;
+	width: 100%;
+}
+
+.addproduct-price input {
+	width: 50%;
+	height: 2.5em;
+	padding-left: 0.5em;
+	border: 1.5px solid gray;
+}
+
+.addproduct-itemfield select {
+	width: 50%;
+	height: 2.5em;
+	padding-left: 0.5em;
+	border: 1.5px solid gray;
+}
+
+.add-product-btn {
+	width: 100%;
+	height: 2.5em;
+	background-color: green;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.add-product-btn:hover {
+	background-color: rgb(0, 63, 0);
+	transition: all 0.3s ease-in-out;
+}
+
+.file-upload {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1em;
+}
+
+.file-upload-icon {
+	font-size: 5em;
+	color: rgb(43, 43, 43);
+	cursor: pointer;
+}
+
+.add-product-image {
+	width: 4em;
+	height: 5em;
+	object-fit: cover;
+	margin: 0;
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.important {
+	color: red;
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1250px) {
+	.add-product {
+		width: 70%;
+		gap: 0.6em;
+		padding: 1.5em 2em;
+	}
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1000px) {
+	.add-product {
+		width: 70%;
+		gap: 0.6em;
+		padding: 1.5em 1em;
+	}
+}
+
+/* LARGE PHONES */
+@media (max-width: 800px) {
+	.add-product {
+		width: 70%;
+		gap: 0.6em;
+		padding: 1.5em 0.2em;
+	}
+
+	.important {
+		font-size: small;
+	}
+}
+
+/* FOR SMALL PHONES */
+@media (max-width: 650px) {
+
+	.add-product {
+		width: 70%;
+		gap: 0.6em;
+		padding: 1.5em 0.2em;
+	}
+
+	.important {
+		font-size: x-small;
+	}
+}

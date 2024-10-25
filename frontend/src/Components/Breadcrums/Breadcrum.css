@@ -1,0 +1,68 @@
+.breadcrum {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 1rem;
+    margin: 2em 8em 1em 8em;
+    text-transform: capitalize;
+}
+
+/* LARGE TABLETS */
+@media (max-width: 1200px) {
+    .breadcrum {
+        display: flex;
+        align-items: center;
+        gap: 0.1em;
+        font-size: 1rem;
+        margin: 1em 1em 1em 1em;
+        text-transform: capitalize;
+    }
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1000px) {
+    .breadcrum {
+        display: flex;
+        align-items: center;
+        gap: 0.1em;
+        font-size: 1rem;
+        margin: 1em 1em 1em 1em;
+        text-transform: capitalize;
+    }
+}
+
+/* LARGE PHONES */
+@media (max-width: 800px) {
+    .breadcrum {
+        display: flex;
+        align-items: center;
+        gap: 0.1em;
+        font-size: 1rem;
+        margin: 1em 1em 1em 1em;
+        text-transform: capitalize;
+    }
+}
+
+/* MEDIUM PHONES */
+@media (max-width: 650px) {
+    .breadcrum {
+        display: flex;
+        align-items: center;
+        gap: 0.1em;
+        font-size: 1rem;
+        margin: 1em 1em 1em 1em;
+        text-transform: capitalize;
+    }
+}
+
+/* FOR SMALL PHONES */
+@media (max-width: 450px) {
+    .breadcrum {
+        display: flex;
+        align-items: center;
+        gap: 0.1em;
+        font-size: 1rem;
+        margin: 1em 1em 1em 1em;
+        text-transform: capitalize;
+    }
+}

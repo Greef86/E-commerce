@@ -1,0 +1,121 @@
+.sidebar {
+	border: 1.5px solid black;
+	margin: 0 2em 2em 0em;
+	height: 28em;
+	box-shadow: 10px 10px 10px;
+	background-color: blanchedalmond;
+	border-radius: 8px;
+	width: 15em;
+	padding: 2em 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+}
+
+.sidebar a {
+	border: 1.5px solid transparent;
+	padding: 0.5em 0;
+
+}
+
+.sidebar a.active {
+	background-color: black;
+}
+
+.sidebar a.active .sidebar-item .icon,
+.sidebar a.active .sidebar-item p {
+	color: greenyellow;
+}
+
+.sidebar-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.sidebar-item .add-icon {
+	font-size: 2rem;
+	color: black;
+}
+
+.sidebar-item .list-icon {
+	font-size: 1.8rem;
+	color: black;
+}
+
+.sidebar-item p {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: black;
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1250px) {
+	.sidebar {
+		margin: 0 0.5em 2em 0em;
+		width: 25%;
+		padding: 2em 0.2em;
+	}
+
+	.sidebar-item p {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: black;
+	}
+
+	.sidebar-item .add-icon {
+		font-size: 1.5rem;
+	}
+
+	.sidebar-item .list-icon {
+		font-size: 1.5rem;
+	}
+}
+
+/* LARGE PHONES */
+@media (max-width: 800px) {
+	.sidebar {
+		margin: 0 0.5em 2em 0em;
+		width: 25%;
+		padding: 2em 0.2em;
+	}
+
+	.sidebar-item p {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: black;
+	}
+
+	.sidebar-item .add-icon {
+		font-size: 1.2rem;
+	}
+
+	.sidebar-item .list-icon {
+		font-size: 1.2rem;
+	}
+}
+
+/* FOR SMALL PHONES */
+@media (max-width: 650px) {
+
+	.sidebar {
+		margin: 0 0.5em 2em 0em;
+		width: 25%;
+		padding: 2em 0.2em;
+	}
+
+	.sidebar-item p {
+		font-size: 0.8rem;
+		font-weight: bold;
+		color: black;
+	}
+
+	.sidebar-item .add-icon {
+		font-size: 1rem;
+	}
+
+	.sidebar-item .list-icon {
+		font-size: 1rem;
+	}
+}

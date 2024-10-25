@@ -1,0 +1,677 @@
+.navbar {
+	display: flex;
+	justify-content: space-around;
+	padding: 8px;
+	box-shadow: 0 1px 10px -2px black;
+	position: sticky;
+	top: 0;
+	background-color: beige;
+	z-index: 100;
+}
+
+.closeNavbar {
+	display: none;
+	cursor: pointer;
+}
+
+.hamburger {
+	display: none;
+	cursor: pointer;
+}
+
+.nav-logo-img {
+	width: 2.5em;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.nav-logo {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.nav-logo p {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: green;
+	font-style: italic;
+}
+
+.nav-manu {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	gap: 30px;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.nav-manu li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.nav-manu li a {
+	color: gray;
+	text-decoration: none;
+	border: none;
+	padding: 4px 10px;
+	border-radius: 6px;
+}
+
+.nav-manu li a.active {
+	color: greenyellow;
+	background-color: black;
+	padding: 4px 10px;
+	border-radius: 6px;
+}
+
+.nav-login-cart {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 50px;
+}
+
+.loginBtn {
+	background-color: red;
+	border: none;
+	color: white;
+	font-weight: bold;
+	padding: 0.45em 1em;
+	font-size: 1.2rem;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.loginBtn:hover {
+	background-color: green;
+	transition: all 0.4s ease-in-out;
+}
+
+.loginBtn:active {
+	background-color: black;
+}
+
+.logoutBtn {
+	background-color: red;
+	border: none;
+	color: white;
+	font-weight: bold;
+	padding: 0.45em 1em;
+	font-size: 1.2rem;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.logoutBtn:hover {
+	background-color: green;
+	transition: all 0.4s ease-in-out;
+}
+
+.logoutBtn:active {
+	background-color: black;
+}
+
+.nav-login-cart-img {
+	font-size: 2.5rem;
+	color: black;
+}
+
+.nav-cart-count {
+	position: absolute;
+	right: -8px;
+	top: -2px;
+	background-color: red;
+	width: 20px;
+	height: 20px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 25px;
+	font-size: 0.9rem;
+	padding: 0px;
+}
+
+.nav-login-cart a.active button {
+	background-color: gray;
+}
+
+.nav-login-cart a.active .nav-login-cart-img {
+	color: red;
+}
+
+/* LARGE TABLETS */
+@media (max-width: 1200px) {
+	.nav-manu {
+		gap: 15px;
+	}
+
+	.nav-login-cart {
+		gap: 15px;
+	}
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1000px) {
+	.navbar {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 8px 2px;
+		box-shadow: 0 1px 10px -2px black;
+		position: sticky;
+		top: 0;
+		background-color: beige;
+		z-index: 100;
+	}
+
+	.nav-logo .nav-logo-img {
+		width: 3em;
+		border-radius: 8px;
+	}
+
+	.nav-logo p {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: green;
+		font-style: italic;
+	}
+
+	.nav-manu {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: -300px;
+		height: 100vh;
+		width: 10em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+		transition: 0.4s
+	}
+
+	.loginBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 1.2rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.logoutBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 1.2rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.nav-login-cart-img {
+		font-size: 3rem;
+		color: black;
+	}
+
+	.nav-login-cart {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 80px;
+	}
+
+	.hamburger {
+		font-size: 2.5rem;
+		display: block;
+	}
+
+	.nav-cart-count {
+		position: absolute;
+		right: -8px;
+		top: -2px;
+		background-color: red;
+		width: 22px;
+		height: 22px;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 30px;
+		font-size: 1rem;
+		padding: 0px;
+	}
+
+	.openNav {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		height: 100vh;
+		width: 15em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+	}
+
+	.closeNavbar {
+		position: absolute;
+		font-size: 3rem;
+		font-weight: bold;
+		top: 10px;
+		right: 40px;
+		display: block;
+	}
+}
+
+/* LARGE PHONES */
+@media (max-width: 800px) {
+	.navbar {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 8px 2px;
+		box-shadow: 0 1px 10px -2px black;
+		position: sticky;
+		top: 0;
+		background-color: beige;
+		z-index: 100;
+	}
+
+	.nav-logo .nav-logo-img {
+		width: 3em;
+		border-radius: 8px;
+	}
+
+	.nav-logo p {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: green;
+		font-style: italic;
+	}
+
+	.nav-manu {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: -300px;
+		height: 100vh;
+		width: 10em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+		transition: 0.4s
+	}
+
+	.loginBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 1.2rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.logoutBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 1.2rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.nav-login-cart-img {
+		font-size: 3rem;
+		color: black;
+	}
+
+	.nav-login-cart {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 40px;
+	}
+
+	.hamburger {
+		font-size: 2.5rem;
+		display: block;
+	}
+
+	.nav-cart-count {
+		position: absolute;
+		right: -8px;
+		top: -2px;
+		background-color: red;
+		width: 22px;
+		height: 22px;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 30px;
+		font-size: 1rem;
+		padding: 0px;
+	}
+
+	.openNav {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		height: 100vh;
+		width: 15em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+	}
+
+	.closeNavbar {
+		position: absolute;
+		font-size: 3rem;
+		font-weight: bold;
+		top: 10px;
+		right: 40px;
+		display: block;
+	}
+}
+
+/* MEDIUM PHONES */
+@media (max-width: 650px) {
+	.navbar {
+		display: flex;
+		justify-content: space-around;
+		gap: 0.5em;
+		align-items: center;
+		padding: 8px 2px;
+		box-shadow: 0 1px 10px -2px black;
+		position: sticky;
+		top: 0;
+		background-color: beige;
+		z-index: 100;
+	}
+
+	.nav-logo .nav-logo-img {
+		width: 3em;
+		border-radius: 8px;
+	}
+
+	.nav-logo p {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: green;
+		font-style: italic;
+	}
+
+	.nav-manu {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: -300px;
+		height: 100vh;
+		width: 10em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+		transition: 0.4s
+	}
+
+	.loginBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 1.2rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.logoutBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 1.2rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.nav-login-cart-img {
+		font-size: 2.8rem;
+		color: black;
+	}
+
+	.nav-login-cart {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		align-items: center;
+	}
+
+	.hamburger {
+		font-size: 2rem;
+		display: block;
+	}
+
+	.nav-cart-count {
+		position: absolute;
+		right: -8px;
+		top: -2px;
+		background-color: red;
+		width: 20px;
+		height: 20px;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 25px;
+		font-size: 1rem;
+		padding: 0px;
+	}
+
+	.openNav {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		height: 100vh;
+		width: 15em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+	}
+
+	.closeNavbar {
+		position: absolute;
+		font-size: 2.5rem;
+		font-weight: bold;
+		top: 10px;
+		right: 8px;
+		display: block;
+	}
+}
+
+/* FOR SMALL PHONES */
+@media (max-width: 450px) {
+	.navbar {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 8px 2px;
+		box-shadow: 0 1px 10px -2px black;
+		position: sticky;
+		top: 0;
+		background-color: beige;
+		z-index: 100;
+	}
+
+	.nav-logo .nav-logo-img {
+		width: 2em;
+		border-radius: 8px;
+	}
+
+	.nav-logo p {
+		font-size: 0.9rem;
+		font-weight: bold;
+		color: green;
+		font-style: italic;
+	}
+
+	.nav-manu {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: -300px;
+		height: 100vh;
+		width: 10em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+		transition: 0.4s
+	}
+
+	.loginBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 0.8rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.logoutBtn {
+		background-color: red;
+		border: none;
+		color: white;
+		font-weight: bold;
+		padding: 0.45em 1em;
+		font-size: 0.8rem;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+
+	.nav-login-cart-img {
+		font-size: 2rem;
+		color: black;
+	}
+
+	.nav-login-cart {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.hamburger {
+		font-size: 1.6rem;
+		display: block;
+	}
+
+	.nav-cart-count {
+		position: absolute;
+		right: -8px;
+		top: -2px;
+		background-color: red;
+		width: 18px;
+		height: 18px;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 25px;
+		font-size: 0.9rem;
+		padding: 0px;
+	}
+
+	.openNav {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		list-style: none;
+		gap: 30px;
+		font-weight: bold;
+		font-size: 1rem;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		height: 100vh;
+		width: 10em;
+		background-color: beige;
+		padding-left: 0.5em;
+		padding-top: 4em;
+	}
+
+	.closeNavbar {
+		position: absolute;
+		font-size: 2.5rem;
+		font-weight: bold;
+		top: 4px;
+		right: 10px;
+		display: block;
+	}
+
+}

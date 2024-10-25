@@ -1,0 +1,385 @@
+.banner {
+	height: 45vh;
+	margin-bottom: 2em;
+}
+
+.banner img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.shopCategoryIndex-sort {
+	display: flex;
+	margin: 0 170px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.dropdown {
+	display: inline-block;
+	position: relative;
+}
+
+.dropdown button {
+	font-size: 1.5rem;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+	border: none;
+	padding: 0.2em 0.8em;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	width: 100%;
+	overflow: auto;
+	margin-top: 0.2em;
+	border-radius: 0.5em;
+	background-color: black;
+	padding: 0.25em;
+}
+
+.dropdown-active {
+	display: block;
+}
+
+.dropdown-content span {
+	display: block;
+	color: white;
+	cursor: pointer;
+	padding: 0.2em 0;
+}
+
+.dropdown-content span:hover {
+	color: red;
+}
+
+.shopCategoryIndex-sort p {
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.shopCategory-products {
+	margin: 2em 4em 4em 4em;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	row-gap: 1.5em;
+	justify-items: center;
+}
+
+.shopCategory-loadmore {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 4em auto;
+	border: 2px solid black;
+	width: 10em;
+	height: 2.5em;
+	border-radius: 40px;
+	font-weight: bold;
+	font-size: 1.2rem;
+	cursor: pointer;
+}
+
+.shopCategory-loadmore:hover {
+	background-color: gray;
+	transition: all 0.4s ease-in-out;
+}
+
+/* LARGE TABLETS */
+@media (max-width: 1200px) {
+	.shopCategory-products {
+		margin: 1em 1em 1em 1em;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		row-gap: 3em;
+		justify-items: center;
+	}
+
+	.shopCategory-loadmore {
+		margin: 2em auto;
+		font-size: 1.4rem;
+	}
+
+	.shopCategoryIndex-sort {
+		display: flex;
+		margin: 0 35px 25px 35px;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.shopCategoryIndex-sort p {
+		font-weight: bold;
+		font-size: 1.6rem;
+	}
+
+	.shopCategory-sort {
+		padding: 6px 20px;
+		border-radius: 40px;
+		border: 2px solid black;
+		font-size: 1.6rem;
+	}
+
+	.shopCategory-sort img {
+		width: 1.2em;
+	}
+
+	.shop-category .banner {
+		height: 18vh;
+		margin-bottom: 2em;
+	}
+
+	.shopCategory-sort .sort>option {
+		font-size: 1rem;
+	}
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1000px) {
+
+	.shopCategory-products {
+		margin: 1em 1em 2em 1em;
+		display: grid;
+		grid-template-columns: 0.2fr 0.2fr;
+		justify-content: space-evenly;
+		row-gap: 3em;
+	}
+
+	.shopCategoryIndex-sort {
+		display: flex;
+		margin: 0 20px 25px 20px;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.shopCategoryIndex-sort p {
+		font-weight: bold;
+		font-size: 1.6rem;
+	}
+
+	.shopCategory-sort {
+		padding: 6px 20px;
+		border-radius: 40px;
+		border: 2px solid black;
+		font-size: 1.6rem;
+	}
+
+	.shopCategory-sort img {
+		width: 1.2em;
+	}
+
+	.shop-category .banner {
+		height: 18vh;
+		margin-bottom: 2em;
+	}
+
+	.banner img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.shopCategory-loadmore {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1em auto;
+		border: 2px solid black;
+		width: 10em;
+		height: 2.5em;
+		border-radius: 40px;
+		font-weight: bold;
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+
+	.shopCategory-sort .sort>option {
+		font-size: 1rem;
+	}
+}
+
+/* LARGE PHONES */
+@media (max-width: 800px) {
+	.shopCategory-products {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3em;
+		margin-bottom: 1em;
+	}
+
+	.shopCategoryIndex-sort {
+		display: flex;
+		margin: 0 20px 25px 20px;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.shopCategoryIndex-sort p {
+		font-weight: bold;
+		font-size: 1.6rem;
+	}
+
+	.shopCategory-sort {
+		padding: 6px 20px;
+		border-radius: 40px;
+		border: 2px solid black;
+		font-size: 1.6rem;
+	}
+
+	.shopCategory-sort img {
+		width: 1.2em;
+	}
+
+	.shop-category .banner {
+		height: 18vh;
+		margin-bottom: 2em;
+	}
+
+	.banner img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.shopCategory-loadmore {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1em auto;
+		border: 2px solid black;
+		width: 10em;
+		height: 2.5em;
+		border-radius: 40px;
+		font-weight: bold;
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+
+	.shopCategory-sort .sort>option {
+		font-size: 1rem;
+	}
+}
+
+/* MEDIUM PHONES */
+@media (max-width: 650px) {
+	.shopCategory-products {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2em;
+		margin-bottom: 1em;
+	}
+
+	.shopCategoryIndex-sort {
+		display: flex;
+		margin: 0 20px 25px 20px;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.shopCategoryIndex-sort p {
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+
+	.shopCategory-sort {
+		padding: 6px 20px;
+		border-radius: 40px;
+		border: 2px solid black;
+		font-size: 1.3rem;
+	}
+
+	.shopCategory-sort img {
+		width: 1em;
+	}
+
+	.shop-category .banner {
+		height: 18vh;
+		margin-bottom: 2em;
+	}
+
+	.banner img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.shopCategory-loadmore {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1em auto;
+		border: 2px solid black;
+		width: 10em;
+		height: 2.5em;
+		border-radius: 40px;
+		font-weight: bold;
+		font-size: 1.2rem;
+		cursor: pointer;
+	}
+
+	.shopCategory-sort .sort>option {
+		font-size: 1rem;
+	}
+}
+
+/* FOR SMALL PHONES */
+@media (max-width: 450px) {
+	.shopCategory-products {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2em;
+		margin-bottom: 1em;
+	}
+
+	.shopCategoryIndex-sort {
+		display: flex;
+		margin: 0 20px 25px 20px;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.shopCategoryIndex-sort p {
+		font-weight: bold;
+		font-size: 1rem;
+	}
+
+	.banner {
+		height: 18vh;
+		margin-bottom: 2em;
+	}
+
+	.banner img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.shopCategory-loadmore {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1em auto;
+		border: 2px solid black;
+		width: 10em;
+		height: 2.5em;
+		border-radius: 40px;
+		font-weight: bold;
+		font-size: 1.2rem;
+		cursor: pointer;
+	}
+
+	.dropdown button {
+		font-size: 1rem;
+	}
+
+	.dropdown-content span {
+		font-size: 0.8rem;
+	}
+}

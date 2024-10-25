@@ -1,0 +1,547 @@
+.mapContainer {
+    margin: 4em 4em 2em 4em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30em;
+}
+
+.banner {
+    height: 45vh;
+    margin-bottom: 2em;
+}
+
+.map {
+    border: 2px solid gray;
+    width: 50%;
+    height: 100%;
+}
+
+.contact {
+    border: 2px solid gray;
+    width: 50%;
+    height: 100%;
+    padding: 0.5em 0 2em 2em;
+}
+
+.contacts p {
+    line-height: 1.7em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.contact h1 {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.contact address {
+    margin-bottom: 1em;
+}
+
+.contactForm {
+    display: flex;
+    margin: 4em 4em 4em 4em;
+}
+
+.contactForm .inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 2em;
+}
+
+.contactForm .inputs input {
+    margin-bottom: 0.8em;
+    background-color: lightgrey;
+    border: 1.5px solid gray;
+    height: 2em;
+    font-size: 1rem;
+    padding: 0 0.5em;
+}
+
+.contactForm .inputs textarea {
+    margin-bottom: 1.2em;
+    background-color: lightgrey;
+    border: 1.5px solid gray;
+    height: 12em;
+    font-size: 1rem;
+    padding: 0.5em;
+    font: inherit;
+}
+
+.contactForm .inputs button {
+    background-color: green;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 1.7em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contactForm .inputs button:hover {
+    background-color: rgb(0, 70, 0);
+    transition: all 0.3s ease-in-out;
+}
+
+.contactForm .form {
+    border: 2px solid gray;
+    width: 50%;
+}
+
+.contactForm .form h2 {
+    text-align: center;
+    margin-top: 0.4em;
+}
+
+.contactForm .employees {
+    border: 2px solid gray;
+    width: 50%;
+}
+
+.contactForm .employees .personel .image {
+    width: 6em;
+    height: 6em;
+    margin-right: 1em;
+}
+
+.contactForm .employees .personel .image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 3em;
+    object-fit: contain;
+    border: 1px solid black;
+}
+
+.employees {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.personel {
+    display: flex;
+    width: 25em;
+}
+
+/* LARGE TABLETS */
+@media (max-width: 1200px) {
+    .contactsContainer .banner {
+        height: 18vh;
+        margin-bottom: 0.2em;
+    }
+
+    .mapContainer {
+        margin: 2em 1em 2em 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 29.5em;
+    }
+
+    .map {
+        border: 2px solid gray;
+        width: 55%;
+        height: 100%;
+    }
+
+    .contact {
+        border: 2px solid gray;
+        width: 45%;
+        height: 100%;
+        padding: 0.5em 0 2em 1em;
+    }
+
+    .contactForm {
+        display: flex;
+        margin: 2em 1em 2em 1em;
+    }
+
+    .contactForm .form h2 {
+        text-align: center;
+        margin-top: 0.4em;
+        font-size: 1.4rem;
+    }
+
+    .contactForm .inputs {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 1em;
+    }
+}
+
+/* SMALL TABLETS */
+@media (max-width: 1000px) {
+    .contactsContainer .banner {
+        height: 18vh;
+        margin-bottom: 0.2em;
+    }
+
+    .mapContainer {
+        margin: 2em 0.5em 2em 0.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 29em;
+    }
+
+    .map {
+        border: 2px solid gray;
+        width: 55%;
+        height: 100%;
+    }
+
+    .contact {
+        border: 2px solid gray;
+        width: 45%;
+        height: 100%;
+        padding: 0.5em 0 2em 1em;
+    }
+
+    .contact h1 {
+        text-align: left;
+        margin-bottom: 0.5em;
+        font-size: 1.5rem;
+    }
+
+    .contactForm {
+        display: flex;
+        margin: 2em 0.5em 2em 0.5em;
+    }
+
+    .employees {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    .personel {
+        display: flex;
+        width: 95%;
+    }
+
+    .contactForm .form h2 {
+        text-align: center;
+        margin-top: 0.4em;
+        font-size: 1.1rem;
+    }
+
+    .contactForm .inputs {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0.5em;
+    }
+}
+
+/* LARGE PHONES */
+@media (max-width: 800px) {
+    .contactsContainer .banner {
+        height: 18vh;
+        margin-bottom: 0.2em;
+    }
+
+    .banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .mapContainer {
+        margin: 1em 1em 1em 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+        height: 55em;
+    }
+
+    .contactsContainer .contact h1 {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .map {
+        border: 1.5px solid gray;
+        width: 100%;
+        height: 47%;
+    }
+
+    .contact {
+        border: 1.5px solid gray;
+        width: 100%;
+        height: 53%;
+        padding: 0.5em 0 2em 2em;
+    }
+
+    .contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 2em 1em 2em 1em;
+    }
+
+    .contactForm .form {
+        border: 1.5px solid gray;
+        width: 100%;
+    }
+
+    .contactForm .form h2 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-top: 0.4em;
+    }
+
+    .contactForm .employees {
+        border: 1.5px solid gray;
+        width: 100%;
+    }
+
+    .contactForm .inputs {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0.5em;
+    }
+
+    .contactForm .inputs input {
+        margin-bottom: 0.8em;
+        background-color: lightgrey;
+        border: 1.5px solid gray;
+        height: 2em;
+        font-size: 1rem;
+        padding: 0 0.2em;
+    }
+
+    .contactForm .employees .personel .image {
+        width: 5em;
+        height: 5em;
+        margin-right: 1em;
+    }
+
+    .contactForm .employees .personel {
+        width: 100%;
+        padding: 0.5em;
+    }
+
+    .info p {
+        font-size: 0.8rem;
+    }
+
+    .employees {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        padding: 1em 2em;
+    }
+}
+
+/* MEDIUM PHONES */
+@media (max-width: 650px) {
+    .contactsContainer .banner {
+        height: 18vh;
+        margin-bottom: 0.2em;
+    }
+
+    .banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .mapContainer {
+        margin: 1em 1em 1em 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+        height: 50em;
+    }
+
+    .contactsContainer .contact h1 {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .map {
+        border: 1.5px solid gray;
+        width: 100%;
+        height: 40%;
+    }
+
+    .contact {
+        border: 1.5px solid gray;
+        width: 100%;
+        height: 60%;
+        padding: 0.5em 0 2em 2em;
+    }
+
+    .contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 2em 1em 2em 1em;
+    }
+
+    .contactForm .form {
+        border: 1.5px solid gray;
+        width: 100%;
+    }
+
+    .contactForm .form h2 {
+        text-align: center;
+        font-size: 1.3em;
+        margin-top: 0.4em;
+    }
+
+    .contactForm .employees {
+        border: 1.5px solid gray;
+        width: 100%;
+    }
+
+    .contactForm .inputs {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0.5em;
+    }
+
+    .contactForm .inputs input {
+        margin-bottom: 0.8em;
+        background-color: lightgrey;
+        border: 1.5px solid gray;
+        height: 2em;
+        font-size: 1rem;
+        padding: 0 0.2em;
+    }
+
+    .contactForm .employees .personel .image {
+        width: 5em;
+        height: 5em;
+        margin-right: 1em;
+    }
+
+    .contactForm .employees .personel {
+        width: 100%;
+        padding: 0.5em;
+    }
+
+    .info p {
+        font-size: 0.8rem;
+    }
+
+    .employees {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+    }
+}
+
+/* FOR SMALL PHONES */
+@media (max-width: 450px) {
+    .contactsContainer .banner {
+        height: 18vh;
+        margin-bottom: 0.2em;
+    }
+
+    .banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .mapContainer {
+        margin: 1em 1em 1em 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+        height: 50em;
+    }
+
+    .contactsContainer .contact h1 {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .map {
+        border: 1.5px solid gray;
+        width: 100%;
+        height: 40%;
+    }
+
+    .contact {
+        border: 1.5px solid gray;
+        width: 100%;
+        height: 60%;
+        padding: 0.5em 0 2em 2em;
+    }
+
+    .contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 2em 1em 2em 1em;
+    }
+
+    .contactForm .form {
+        border: 1.5px solid gray;
+        width: 100%;
+    }
+
+    .contactForm .form h2 {
+        text-align: center;
+        font-size: 0.9em;
+        margin-top: 0.4em;
+    }
+
+    .contactForm .employees {
+        border: 1.5px solid gray;
+        width: 100%;
+    }
+
+    .contactForm .inputs {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0.5em;
+    }
+
+    .contactForm .inputs input {
+        margin-bottom: 0.8em;
+        background-color: lightgrey;
+        border: 1.5px solid gray;
+        height: 2em;
+        font-size: 1rem;
+        padding: 0 0.2em;
+    }
+
+    .contactForm .employees .personel .image {
+        width: 5em;
+        height: 5em;
+        margin-right: 1em;
+    }
+
+    .contactForm .employees .personel {
+        width: 100%;
+        padding: 0.5em;
+    }
+
+    .info p {
+        font-size: 0.8rem;
+    }
+
+    .employees {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+    }
+}

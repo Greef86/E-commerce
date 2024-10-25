@@ -1,0 +1,63 @@
+.maincontainer-payment {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	height: 90vh;
+}
+
+.payment-cancel {
+	background-color: red;
+	color: white;
+	width: 24em;
+	height: 14em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4em;
+	border-radius: 10px;
+}
+
+.payment-cancel button {
+	background-color: black;
+	color: white;
+	border: none;
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.back-btns {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+}
+
+.payment-succeed {
+	background-color: green;
+	color: white;
+	width: 24em;
+	height: 14em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4em;
+	border-radius: 10px;
+}
+
+.payment-succeed button {
+	background-color: black;
+	color: white;
+	border: none;
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	border-radius: 5px;
+}
