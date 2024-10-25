@@ -28,7 +28,7 @@ const LoginSignup = () => {
 		setLoadingSignin(true)
 		console.log("Login Function executed", formData)
 		let responseData
-		await fetch("http://localhost:4000/login", {
+		await fetch("https://e-commerce-backend-1zj4.onrender.com/login", {
 			method: "POST",
 			headers: {
 				Accept: "application/form-data",
@@ -51,7 +51,7 @@ const LoginSignup = () => {
 		setUserEmail(formData.email)
 		console.log("Signup function executed", formData)
 		let responseData
-		await fetch("http://localhost:4000/signup", {
+		await fetch("https://e-commerce-backend-1zj4.onrender.com/signup", {
 			method: "POST",
 			headers: {
 				Accept: "application/form-data",
@@ -71,7 +71,7 @@ const LoginSignup = () => {
 
 	const forgotPasswordHandler = async () => {
 		setLoadingForgotPassword(true)
-		const response = await fetch("http://localhost:4000/forgot-password", {
+		const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/forgot-password", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: formData.email })
