@@ -20,7 +20,7 @@ const ShopContextProvider = (props) => {
 	console.log(cartItems)
 
 	useEffect(() => {
-		fetch("http://localhost:4000/allproducts").then((response) => response.json()).then((data) => setAll_product(data))
+		fetch("https://e-commerce-backend-1zj4.onrender.com/allproducts").then((response) => response.json()).then((data) => setAll_product(data))
 		if (localStorage.getItem("auth-token")) {
 			fetch("http://localhost:4000/getcart", {
 				method: "POST",
@@ -35,7 +35,7 @@ const ShopContextProvider = (props) => {
 	}, [])
 
 	useEffect(() => {
-		fetch("http://localhost:4000/delete-useless-data", {
+		fetch("https://e-commerce-backend-1zj4.onrender.com/delete-useless-data", {
 			method: "DELETE"
 		}).then((response) => response.json()).then((data) => console.log(data))
 	}, [])
@@ -43,7 +43,7 @@ const ShopContextProvider = (props) => {
 	const addToCart = (itemId, size) => {
 		setCartItems((prev) => ({ ...prev, [itemId]: { quantity: prev[itemId].quantity + 1, size: [...prev[itemId].size, size] } }))
 		if (localStorage.getItem("auth-token")) {
-			fetch("http://localhost:4000/addtocart", {
+			fetch("https://e-commerce-backend-1zj4.onrender.com/addtocart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",
@@ -59,7 +59,7 @@ const ShopContextProvider = (props) => {
 		cartItems[itemId].size.pop()
 		setCartItems((prev) => ({ ...prev, [itemId]: { quantity: prev[itemId].quantity - 1, size: [...cartItems[itemId].size] } }))
 		if (localStorage.getItem("auth-token")) {
-			fetch("http://localhost:4000/removefromcart", {
+			fetch("https://e-commerce-backend-1zj4.onrender.com/removefromcart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",
@@ -73,7 +73,7 @@ const ShopContextProvider = (props) => {
 
 	const clearCart = (cartitems) => {
 		if (localStorage.getItem("auth-token")) {
-			fetch("http://localhost:4000/clearcart", {
+			fetch("https://e-commerce-backend-1zj4.onrender.com/clearcart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",
