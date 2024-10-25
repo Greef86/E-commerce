@@ -46,7 +46,7 @@ const CartItems = () => {
 			stripe = await loadStripe("pk_test_51Q9qAzFNDSAGYPtQ4fAfdMBUb1N6bHtQwPHhslcJjvS9nCKeupYQ3o1NSFhtUaT0V8rgrI7348mxspWDY0BEtjGW00PpU0NXqH")
 		}
 		console.log(stripe)
-		const response = await fetch("http://localhost:4000/create-checkout-session", {
+		const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/create-checkout-session", {
 			method: "POST",
 			headers: {
 				"auth-token": `${localStorage.getItem("auth-token")}`,
