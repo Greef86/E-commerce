@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import "./ListProduct.css"
 import { MdDelete } from "react-icons/md"
+import { RotatingLines } from "react-loader-spinner"
 
 const ListProduct = () => {
 
 	const [allProducts, setAllProducts] = useState([])
+	const [loading, setLoading] = useState(false)
 
 	const fetchInfo = async () => {
-		await fetch("https://e-commerce-backend-1zj4.onrender.com/allproducts").then((response) => response.json()).then((data) => { setAllProducts(data) })
+		setLoading(true)
+		await fetch("https://e-commerce-backend-1zj4.onrender.com/allproducts").then((response) => response.json()).then((data) => { 
+			setAllProducts(data) 
+			setLoading(false)
+		})
 	}
 
 	useEffect(() => {
@@ -38,6 +44,7 @@ const ListProduct = () => {
 				<p><strong>Remove</strong></p>
 			</div>
 			<hr />
+			{loading && <RotatingLines width='30' strokeColor='white' />}
 			<div className="products-list-all-products">
 				{allProducts.map((product, index) => {
 
