@@ -129,7 +129,7 @@
 
 	.cartItems-format-main {
 		display: grid;
-		grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 0fr;
+		grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1fr;
 		align-items: center;
 		gap: 0.5em;
 		font-weight: bold;
@@ -141,7 +141,7 @@
 		font-weight: normal;
 		font-size: 0.9rem;
 		display: grid;
-		grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 0fr;
+		grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1fr;
 		align-items: center;
 		gap: 0.5em;
 		width: 100%;
@@ -235,12 +235,12 @@
 
 	/* title (header) */
 	.cartItems-format-main p:nth-child(2) {
-		width: 6em;
+		width: 8em;
 	}
 
 	/* title description */
 	.cartItems-format .name {
-		width: 6em;
+		width: 8em;
 		height: 4em;
 		overflow: hidden;
 	}

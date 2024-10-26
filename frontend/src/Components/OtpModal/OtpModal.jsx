@@ -19,7 +19,7 @@ const OtpModal = ({ closeModal, userEmail, token }) => {
 		}, 1000)
 		if (count === 0) {
 			closeModal(false)
-			fetch("http://localhost:4000/destroy-user", {
+			fetch("https://e-commerce-backend-1zj4.onrender.com/destroy-user", {
 				method: "DELETE",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: userEmail })
@@ -33,7 +33,7 @@ const OtpModal = ({ closeModal, userEmail, token }) => {
 		// console.log(`${digit1}${digit2}${digit3}${digit4}${digit5}${digit6}`)
 		const otp = `${digit1}${digit2}${digit3}${digit4}${digit5}${digit6}`
 		console.log(otp)
-		const response = await fetch("http://localhost:4000/verify-email", {
+		const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/verify-email", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

@@ -41,11 +41,11 @@ const ShopCategory = (props) => {
 						<span onClick={() => {
 							all_product.sort((a, b) => a.date.localeCompare(b.date))
 							removeDropdownHandler()
-						}}>{`Date: Old -> New`}</span>
+						}}>{`Date: O -> N`}</span>
 						<span onClick={() => {
 							all_product.sort((a, b) => b.date.localeCompare(a.date))
 							removeDropdownHandler()
-						}}>{`Date: New -> Old`}</span>
+						}}>{`Date: N -> O`}</span>
 					</div>
 				</div>
 			</div>

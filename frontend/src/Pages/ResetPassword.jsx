@@ -13,7 +13,7 @@ const ResetPassword = () => {
 	const resetPasswordHandler = async () => {
 		try {
 			setLoading(true)
-			const response = await fetch("http://localhost:4000/password-reset", {
+			const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/password-reset", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: state, password, confirmPassword })
