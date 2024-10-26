@@ -161,12 +161,12 @@
 
 	/* title (header) */
 	.cartItems-format-main p:nth-child(2) {
-		width: 10em;
+		width: 8em;
 	}
 
 	/* title description */
 	.cartItems-format .name {
-		width: 10em;
+		width: 8em;
 		height: 4em;
 		overflow: hidden;
 	}
@@ -235,12 +235,12 @@
 
 	/* title (header) */
 	.cartItems-format-main p:nth-child(2) {
-		width: 10em;
+		width: 6em;
 	}
 
 	/* title description */
 	.cartItems-format .name {
-		width: 10em;
+		width: 6em;
 		height: 4em;
 		overflow: hidden;
 	}
