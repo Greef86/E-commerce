@@ -147,9 +147,9 @@
 		align-items: center;
 	}
 
-	/* .table-head p strong {
+	.table-head p strong {
 		font-size: 0.6rem;
-	} */
+	}
 
 	.list-product hr {
 		width: 100%;
