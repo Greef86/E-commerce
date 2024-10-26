@@ -44,7 +44,7 @@ const ListProduct = () => {
 				<p><strong>Remove</strong></p>
 			</div>
 			<hr />
-			{loading && <RotatingLines width='30' strokeColor='white' />}
+			{loading && <RotatingLines width='50' strokeColor='black' />}
 			<div className="products-list-all-products">
 				{allProducts.map((product, index) => {
 
