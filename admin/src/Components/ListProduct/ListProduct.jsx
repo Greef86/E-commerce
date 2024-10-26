@@ -9,7 +9,11 @@ const ListProduct = () => {
 	const [loading, setLoading] = useState(false)
 
 	const fetchInfo = async () => {
-		await fetch("https://e-commerce-backend-1zj4.onrender.com/allproducts").then((response) => response.json()).then((data) => { setAllProducts(data) })
+		setLoading(true)
+		await fetch("https://e-commerce-backend-1zj4.onrender.com/allproducts").then((response) => response.json()).then((data) => {
+			setAllProducts(data)
+			setLoading(false)
+		})
 	}
 
 	useEffect(() => {
