@@ -115,12 +115,16 @@
 		align-items: center;
 	}
 
+	.table-head p strong {
+		font-size: 0.75rem;
+	}
+
 	.list-product hr {
 		width: 100%;
 	}
 
 	.products-list-all-products p {
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 	}
 
 	.product-name {
@@ -148,7 +152,7 @@
 	}
 
 	.table-head p strong {
-		font-size: 0.6rem;
+		font-size: 0.65rem;
 	}
 
 	.list-product hr {
@@ -156,7 +160,7 @@
 	}
 
 	.products-list-all-products p {
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 	}
 
 	.product-name {
@@ -185,7 +189,7 @@
 	}
 
 	.table-head p strong {
-		font-size: 0.5rem;
+		font-size: 0.55rem;
 	}
 
 	.list-product hr {
