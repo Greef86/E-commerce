@@ -3,6 +3,7 @@ import "./ShopCategory.css"
 import { ShopContext } from '../Context/ShopContext'
 import Item from '../Components/Items/Item'
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+import { RotatingLines } from "react-loader-spinner"
 
 const ShopCategory = (props) => {
 	const { all_product } = useContext(ShopContext)
@@ -49,6 +50,11 @@ const ShopCategory = (props) => {
 					</div>
 				</div>
 			</div>
+			{!all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+				<RotatingLines width='30' strokeColor='white' />
+				<RotatingLines width='30' strokeColor='white' />
+				<RotatingLines width='30' strokeColor='white' />
+			</div>}
 			<div className="shopCategory-products">
 				{all_product.map((item, i) => {
 					if (props.category === item.category) {

@@ -25,9 +25,9 @@ const CartItems = () => {
 	})
 	arrayOfItems = Array.from(cartItemsArray)
 
-	console.log(all_product)
-	console.log(cartItems)
-	console.log(arrayOfItems)
+	// console.log(all_product)
+	// console.log(cartItems)
+	// console.log(arrayOfItems)
 
 	const sizeCount = (sizeArray, size) => {
 		let count = 0
@@ -80,6 +80,11 @@ const CartItems = () => {
 					<p className="same-width">Remove</p>
 				</div>
 				<hr />
+				{!all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+					<RotatingLines width='30' strokeColor='white' />
+					<RotatingLines width='30' strokeColor='white' />
+					<RotatingLines width='30' strokeColor='white' />
+				</div>}
 				{all_product.map((e) => {
 					if (cartItems[e.id].quantity > 0) {
 						return (

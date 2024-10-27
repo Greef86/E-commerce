@@ -296,6 +296,18 @@
 		width: 100%;
 	}
 
+	/* title (header) */
+	.cartItems-format-main p:nth-child(2) {
+		width: 6em;
+	}
+
+	/* title description */
+	.cartItems-format .name {
+		width: 6em;
+		height: 4em;
+		overflow: hidden;
+	}
+
 	/* product icon */
 	.cartIcon-product-icon {
 		width: 4.5em;
