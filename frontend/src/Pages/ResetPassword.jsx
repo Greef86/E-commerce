@@ -36,7 +36,7 @@ const ResetPassword = () => {
 	return (
 		<div style={{ backgroundColor: "white", height: "90vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
 			<div className="forgot-password-container">
-				<h6>Reset Password</h6>
+				<h6 style={{ color: "white", fontSize: "2rem" }}>Reset Password</h6>
 				<div className="loginSignup-fields">
 					{error && <small style={{ color: "red" }}>{error}</small>}
 					<input type="password" value={password} onChange={(event) => setPassword(event.target.value)}
