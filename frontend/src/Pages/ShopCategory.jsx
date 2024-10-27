@@ -51,18 +51,18 @@ const ShopCategory = (props) => {
 				</div>
 			</div>
 			<div className="shopCategory-products">
-				{!all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+				{all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
 					<RotatingLines width='30' strokeColor='black' />
 					<RotatingLines width='30' strokeColor='black' />
 					<RotatingLines width='30' strokeColor='black' />
 				</div>}
-				{all_product.map((item, i) => {
+				{/* {all_product.map((item, i) => {
 					if (props.category === item.category) {
 						return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
 					} else {
 						return null
 					}
-				})}
+				})} */}
 			</div>
 			<div className="shopCategory-loadmore">
 				Explore More
