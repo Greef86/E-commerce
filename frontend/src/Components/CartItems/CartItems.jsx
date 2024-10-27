@@ -80,7 +80,7 @@ const CartItems = () => {
 					<p className="same-width">Remove</p>
 				</div>
 				<hr />
-				{!all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+				{all_product?.length === 0 && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
 					<RotatingLines width='30' strokeColor='black' />
 					<RotatingLines width='30' strokeColor='black' />
 					<RotatingLines width='30' strokeColor='black' />
