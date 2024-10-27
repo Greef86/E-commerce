@@ -23,9 +23,9 @@ const NewCollections = () => {
 			<h1 className='main-header-text'>NEW COLLECTIONS</h1>
 			<hr />
 			{loading && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-				<RotatingLines width='30' strokeColor='white' />
-				<RotatingLines width='30' strokeColor='white' />
-				<RotatingLines width='30' strokeColor='white' />
+				<RotatingLines width='30' strokeColor='black' />
+				<RotatingLines width='30' strokeColor='black' />
+				<RotatingLines width='30' strokeColor='black' />
 			</div>}
 			<div className="collections">
 				{new_collections.map((item, i) => {

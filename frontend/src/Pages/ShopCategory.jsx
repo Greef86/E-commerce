@@ -51,9 +51,9 @@ const ShopCategory = (props) => {
 				</div>
 			</div>
 			{!all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-				<RotatingLines width='30' strokeColor='white' />
-				<RotatingLines width='30' strokeColor='white' />
-				<RotatingLines width='30' strokeColor='white' />
+				<RotatingLines width='30' strokeColor='black' />
+				<RotatingLines width='30' strokeColor='black' />
+				<RotatingLines width='30' strokeColor='black' />
 			</div>}
 			<div className="shopCategory-products">
 				{all_product.map((item, i) => {

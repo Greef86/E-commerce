@@ -81,9 +81,9 @@ const CartItems = () => {
 				</div>
 				<hr />
 				{!all_product && <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-					<RotatingLines width='30' strokeColor='white' />
-					<RotatingLines width='30' strokeColor='white' />
-					<RotatingLines width='30' strokeColor='white' />
+					<RotatingLines width='30' strokeColor='black' />
+					<RotatingLines width='30' strokeColor='black' />
+					<RotatingLines width='30' strokeColor='black' />
 				</div>}
 				{all_product.map((e) => {
 					if (cartItems[e.id].quantity > 0) {
