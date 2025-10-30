@@ -18,8 +18,6 @@ import ScrollToTop from "./Components/ScrollToTop";
 import NewCollections from "./Components/NewCollections/NewCollections";
 import Success from "./Pages/StripePayment/Success";
 import Cancel from "./Pages/StripePayment/Cancel";
-import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
-import ResetPassword from "./Pages/ResetPassword";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import TermsConditions from "./Pages/TermsConditions/TermsConditions";
 // import "@stripe/stripe-js"
@@ -48,8 +46,6 @@ function App() {
           <Route path="/login" element={<><Navbar /><LoginSignup /><Footer /></>} />
           <Route path="/privacypolicy" element={<><Navbar /><PrivacyPolicy /><Footer /></>} />
           <Route path="/termsconditions" element={<><Navbar /><TermsConditions /><Footer /></>} />
-		  <Route path="/forgot-password" element={<ForgotPassword/>}/>
-		  <Route path="/reset-password" element={<ResetPassword/>}/>
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>

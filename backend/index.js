@@ -10,8 +10,6 @@ require("dotenv").config()
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 const cloudinary = require("./utils/cloudinary")
 const bcrypt = require("bcryptjs")
-const { sendVerificationCode } = require("./utils/email")
-const nodemailer = require("nodemailer")
 const app = express()
 
 app.use(express.json())
@@ -183,7 +181,6 @@ app.post("/signup", async (req, res) => {
     }
 	const salt = await bcrypt.genSalt()
 	const hashedPassword = await bcrypt.hash(req.body.password, salt)
-	const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
     const user = new Users({
         name: req.body.username,
         email: req.body.email,
@@ -198,63 +195,7 @@ app.post("/signup", async (req, res) => {
         }
     }
     const token = jwt.sign(data, "secret_ecom")
-	sendVerificationCode(user.email, verificationCode)
     res.json({success: true, token})
-})
-
-//Forgot password endpoint
-app.post("/forgot-password", async(req, res) => {
-	try {
-		const {email} = req.body
-		if(!email){return res.status(400).json({success: false, errors: "Please enter email address!"})}
-		const user = await Users.findOne({email: email})
-		if(!user){return res.status(400).json({success: false, errors: "This email does not exist in our database!"})}
-		const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
-		// user.verificationCode = verificationCode
-		sendVerificationCode(user.email, verificationCode)
-
-		if(user){return res.status(200).json(verificationCode)}
-		
-	} catch (error) {
-		return res.status(500).json({success: false, errors: error.message})
-	}
-})
-
-//Creating endpoint to reset password
-app.post("/password-reset", async(req, res) => {
-	try {
-		const {email, password, confirmPassword} = req.body
-		if(!password || !confirmPassword){return res.status(400).json({success: false, errors: "All fields are required!"})}
-		if(password !== confirmPassword){return res.status(400).json({success: false, errors: "Password does not match Confirm Password!"})}
-		const user = await Users.findOne({email: email})
-		const salt = await bcrypt.genSalt()
-	    const hashedPassword = await bcrypt.hash(password, salt)
-		user.password = hashedPassword
-		await user.save()
-		return res.status(200).json("Your password has been reset!")
-	} catch (error) {
-		return res.status(500).json({success: false, errors: error.message})
-	}
-})
-
-//Creating endpoint to verify user email
-app.post("/verify-email", async (req, res) => {
-	try {
-		const {code} = req.body
-		console.log(code)
-		if(code?.length !== 6){return res.status(400).json({success: false, errors: "Verification code is incomplete!"})}
-		const user = await Users.findOne({verificationCode: code})
-		if(!user){
-			return res.status(400).json({success: false, errors: "Your code does not match OTP, it may be expired!"})
-		}else{
-			user.isVerified = true
-			user.verificationCode = undefined
-			await user.save()
-			return res.status(200).json("Email Account Verified!")
-		}
-	} catch (error) {
-		return res.status(500).json({success: false, errors: error.message})
-	}
 })
 
 app.delete("/destroy-user", async (req, res) => {

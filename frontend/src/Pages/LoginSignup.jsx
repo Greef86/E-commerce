@@ -1,24 +1,19 @@
 import React, { useState } from 'react'
 import "./LoginSignup.css"
-import OtpModal from '../Components/OtpModal/OtpModal'
-import { useNavigate } from 'react-router-dom'
 import { RotatingLines } from "react-loader-spinner"
 
 const LoginSignup = () => {
 
 	const [state, setState] = useState("Login")
 	const [error, setError] = useState(null)
-	const [otpModal, setOtpModal] = useState(false)
-	const [loadingForgotPassword, setLoadingForgotPassword] = useState(false)
 	const [loadingSignin, setLoadingSignin] = useState(false)
-	const [userEmail, setUserEmail] = useState(null)
-	const [token, setToken] = useState(null)
+	// const [userEmail, setUserEmail] = useState(null)
+	// const [token, setToken] = useState(null)
 	const [formData, setFormData] = useState({
 		username: "",
 		password: "",
 		email: ""
 	})
-	const navigate = useNavigate()
 
 	const changeHandler = (event) => {
 		setFormData({ ...formData, [event.target.name]: event.target.value })
@@ -48,7 +43,7 @@ const LoginSignup = () => {
 
 	const signup = async () => {
 		setLoadingSignin(true)
-		setUserEmail(formData.email)
+		// setUserEmail(formData.email)
 		console.log("Signup function executed", formData)
 		let responseData
 		await fetch("https://onlinestore-backend-hjyg.onrender.com/signup", {
@@ -60,30 +55,11 @@ const LoginSignup = () => {
 			body: JSON.stringify(formData),
 		}).then((response) => response.json()).then((data) => responseData = data)
 		if (responseData.success) {
-			setToken(responseData.token)
+			// setToken(responseData.token)
 			setLoadingSignin(false)
-			setOtpModal(true)
 		} else {
 			setLoadingSignin(false)
 			setError(responseData.errors)
-		}
-	}
-
-	const forgotPasswordHandler = async () => {
-		setLoadingForgotPassword(true)
-		const response = await fetch("https://onlinestore-backend-hjyg.onrender.com/forgot-password", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ email: formData.email })
-		})
-		const data = await response.json()
-		if (!response.ok) {
-			setLoadingForgotPassword(false)
-			setError(data.errors)
-		} else {
-			setLoadingForgotPassword(false)
-			setError(null)
-			navigate("/forgot-password", { state: { code: data, email: formData.email } })
 		}
 	}
 
@@ -91,7 +67,6 @@ const LoginSignup = () => {
 		<div className='loginSignup'>
 			<div className="loginSignup-container">
 				<h1 className='signup-text'>{state}</h1>
-				{otpModal && <div className='otpmodal'><OtpModal closeModal={setOtpModal} userEmail={userEmail} token={token} /></div>}
 				<div className="loginSignup-fields">
 					{error && <small style={{ color: "red" }}>{error}</small>}
 					{state === "SignUp" ? <input type="text" value={formData.username} onChange={changeHandler} name="username" placeholder='Name' /> : <></>}
@@ -107,11 +82,6 @@ const LoginSignup = () => {
 					<p className='loginSignup-login'>Already have an account? <span onClick={() => { setState("Login") }} className='login-span'>Login</span></p>
 					:
 					<div className='forgot-password-login'>
-						{loadingForgotPassword ? <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-							<RotatingLines width='30' strokeColor='white' />
-							<RotatingLines width='30' strokeColor='white' />
-							<RotatingLines width='30' strokeColor='white' />
-						</div> : <p onClick={() => forgotPasswordHandler()} className='forgot-password'>I forgot my password</p>}
 						<p className='loginSignup-login'>I do not have an account <span onClick={() => { setState("SignUp") }} className='login-span'>SignUp</span></p>
 					</div>}
 				<div className="loginSignup-agree">
