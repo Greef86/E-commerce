@@ -10,7 +10,6 @@ const CartItems = () => {
 	const { all_product, cartItems, removeFromCart, getTotalCartAmount, clearCart } = useContext(ShopContext)
 	const cartItemsArray = new Set()
 	const [redirectToCheckout, setRedirectToCheckout] = useState(false)
-	const [redirectError, setRedirectError] = useState(null)
 
 	let arrayOfItems = []
 	all_product.map((product) => {
@@ -25,10 +24,6 @@ const CartItems = () => {
 	})
 	arrayOfItems = Array.from(cartItemsArray)
 
-	// console.log(all_product)
-	// console.log(cartItems)
-	// console.log(arrayOfItems)
-
 	const sizeCount = (sizeArray, size) => {
 		let count = 0
 		for (let i = 0; i < sizeArray?.length; i++) {
@@ -40,13 +35,13 @@ const CartItems = () => {
 	}
 
 	let stripe
-	const make_payment = async () => {
+	const make_payment = async () => { 
 		setRedirectToCheckout(true)
 		if (!stripe) {
 			stripe = await loadStripe("pk_test_51Q9qAzFNDSAGYPtQ4fAfdMBUb1N6bHtQwPHhslcJjvS9nCKeupYQ3o1NSFhtUaT0V8rgrI7348mxspWDY0BEtjGW00PpU0NXqH")
 		}
 		console.log(stripe)
-		const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/create-checkout-session", {
+		const response = await fetch("https://onlinestore-backend-hjyg.onrender.com/create-checkout-session", {
 			method: "POST",
 			headers: {
 				"auth-token": `${localStorage.getItem("auth-token")}`,

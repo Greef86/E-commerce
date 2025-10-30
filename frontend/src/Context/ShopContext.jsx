@@ -19,10 +19,10 @@ const ShopContextProvider = (props) => {
 
 	console.log(cartItems)
 
-	useEffect(() => {
-		fetch("https://e-commerce-backend-1zj4.onrender.com/allproducts").then((response) => response.json()).then((data) => setAll_product(data))
+	useEffect(() => { 
+		fetch("https://onlinestore-backend-hjyg.onrender.com/allproducts").then((response) => response.json()).then((data) => setAll_product(data))
 		if (localStorage.getItem("auth-token")) {
-			fetch("https://e-commerce-backend-1zj4.onrender.com/getcart", {
+			fetch("https://onlinestore-backend-hjyg.onrender.com/getcart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",
@@ -35,7 +35,7 @@ const ShopContextProvider = (props) => {
 	}, [])
 
 	useEffect(() => {
-		fetch("https://e-commerce-backend-1zj4.onrender.com/delete-useless-data", {
+		fetch("https://onlinestore-backend-hjyg.onrender.com/delete-useless-data", {
 			method: "DELETE"
 		}).then((response) => response.json()).then((data) => console.log(data))
 	}, [])
@@ -43,7 +43,7 @@ const ShopContextProvider = (props) => {
 	const addToCart = (itemId, size) => {
 		setCartItems((prev) => ({ ...prev, [itemId]: { quantity: prev[itemId].quantity + 1, size: [...prev[itemId].size, size] } }))
 		if (localStorage.getItem("auth-token")) {
-			fetch("https://e-commerce-backend-1zj4.onrender.com/addtocart", {
+			fetch("https://onlinestore-backend-hjyg.onrender.com/addtocart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",
@@ -59,7 +59,7 @@ const ShopContextProvider = (props) => {
 		cartItems[itemId].size.pop()
 		setCartItems((prev) => ({ ...prev, [itemId]: { quantity: prev[itemId].quantity - 1, size: [...cartItems[itemId].size] } }))
 		if (localStorage.getItem("auth-token")) {
-			fetch("https://e-commerce-backend-1zj4.onrender.com/removefromcart", {
+			fetch("https://onlinestore-backend-hjyg.onrender.com/removefromcart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",
@@ -73,7 +73,7 @@ const ShopContextProvider = (props) => {
 
 	const clearCart = (cartitems) => {
 		if (localStorage.getItem("auth-token")) {
-			fetch("https://e-commerce-backend-1zj4.onrender.com/clearcart", {
+			fetch("https://onlinestore-backend-hjyg.onrender.com/clearcart", {
 				method: "POST",
 				headers: {
 					Accept: "application/form-data",

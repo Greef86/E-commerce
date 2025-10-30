@@ -10,10 +10,10 @@ const ResetPassword = () => {
 	const [password, setPassword] = useState("")
 	const [confirmPassword, setConfirmPassword] = useState("")
 
-	const resetPasswordHandler = async () => {
+	const resetPasswordHandler = async () => { 
 		try {
 			setLoading(true)
-			const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/password-reset", {
+			const response = await fetch("https://onlinestore-backend-hjyg.onrender.com/password-reset", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: state, password, confirmPassword })

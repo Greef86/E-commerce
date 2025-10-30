@@ -24,11 +24,11 @@ const LoginSignup = () => {
 		setFormData({ ...formData, [event.target.name]: event.target.value })
 	}
 
-	const login = async () => {
+	const login = async () => { 
 		setLoadingSignin(true)
 		console.log("Login Function executed", formData)
 		let responseData
-		await fetch("https://e-commerce-backend-1zj4.onrender.com/login", {
+		await fetch("https://onlinestore-backend-hjyg.onrender.com/login", {
 			method: "POST",
 			headers: {
 				Accept: "application/form-data",
@@ -51,7 +51,7 @@ const LoginSignup = () => {
 		setUserEmail(formData.email)
 		console.log("Signup function executed", formData)
 		let responseData
-		await fetch("https://e-commerce-backend-1zj4.onrender.com/signup", {
+		await fetch("https://onlinestore-backend-hjyg.onrender.com/signup", {
 			method: "POST",
 			headers: {
 				Accept: "application/form-data",
@@ -71,7 +71,7 @@ const LoginSignup = () => {
 
 	const forgotPasswordHandler = async () => {
 		setLoadingForgotPassword(true)
-		const response = await fetch("https://e-commerce-backend-1zj4.onrender.com/forgot-password", {
+		const response = await fetch("https://onlinestore-backend-hjyg.onrender.com/forgot-password", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: formData.email })

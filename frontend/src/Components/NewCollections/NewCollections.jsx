@@ -10,9 +10,9 @@ const NewCollections = () => {
 	const [new_collections, setNew_collections] = useState([])
 	const [loading, setLoading] = useState(false)
 
-	useEffect(() => {
+	useEffect(() => { 
 		setLoading(true)
-		fetch("https://e-commerce-backend-1zj4.onrender.com/newcollection").then((response) => response.json()).then((data) => {
+		fetch("https://onlinestore-backend-hjyg.onrender.com/newcollection").then((response) => response.json()).then((data) => {
 			setNew_collections(data)
 			setLoading(false)
 		})

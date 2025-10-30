@@ -12,7 +12,7 @@ const sendVerificationCode = async (email, verificationCode) => {
 		})
 		console.log("Email Sent Successfully", response)
 	} catch (error) {
-		console.log("Email Sent Error")
+		console.log("Email Sent Error", error)
 	}
 }
 
