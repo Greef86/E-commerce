@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import "./ListProduct.css"
 import { MdDelete } from "react-icons/md"
 import { RotatingLines } from "react-loader-spinner"
+import {backendUrl} from "../../Constants"
 
 const ListProduct = () => {
-
+											
 	const [allProducts, setAllProducts] = useState([])
 	const [loading, setLoading] = useState(false)
 
 	const fetchInfo = async () => {
 		setLoading(true)
-		await fetch("https://onlinestore-backend-hjyg.onrender.com/allproducts").then((response) => response.json()).then((data) => {
+		await fetch(`${backendUrl}/allproducts`).then((response) => response.json()).then((data) => {
 			setAllProducts(data)
 			setLoading(false)
 		})
@@ -21,7 +22,7 @@ const ListProduct = () => {
 	}, [])
 
 	const removeProduct = async (id) => {
-		await fetch("https://onlinestore-backend-hjyg.onrender.com/removeproduct", {
+		await fetch(`${backendUrl}/removeproduct`, {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
@@ -79,4 +80,4 @@ const ListProduct = () => {
 	)
 }
 
-export default ListProduct
+export default React.memo(ListProduct) 

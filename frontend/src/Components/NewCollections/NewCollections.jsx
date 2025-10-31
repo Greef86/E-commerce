@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./NewCollections.css"
 import Item from "../Items/Item"
 import { RotatingLines } from "react-loader-spinner"
+import {backendUrl} from "../../Constants"
 //I will remove this
 // import new_collections from "../Assets/new_collections"
 
@@ -12,7 +13,7 @@ const NewCollections = () => {
 
 	useEffect(() => { 
 		setLoading(true)
-		fetch("https://onlinestore-backend-hjyg.onrender.com/newcollection").then((response) => response.json()).then((data) => {
+		fetch(`${backendUrl}/newcollection`).then((response) => response.json()).then((data) => {
 			setNew_collections(data)
 			setLoading(false)
 		})

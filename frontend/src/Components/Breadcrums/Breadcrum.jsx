@@ -17,7 +17,6 @@ const Breadcrums = (props) => {
         <Link to="/" replace={true}></Link>
     }
 
-
 }
 
 export default Breadcrums

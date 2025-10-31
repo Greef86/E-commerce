@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./AddProduct.css"
-import { MdCloudUpload, MdUpload } from "react-icons/md"
+import { MdCloudUpload } from "react-icons/md"
+import {backendUrl} from "../../Constants"
 
 const AddProduct = () => {
 
@@ -32,6 +33,12 @@ const AddProduct = () => {
 			setSuccessState(null)
 			return setErrorState("All fields except (Product Description) are required!")
 		}
+		const oldPrice = Number(productDetails.old_price) 
+		const newPrice = Number(productDetails.new_price)
+		if (isNaN(oldPrice) || isNaN(newPrice)) {
+			setSuccessState(null)
+			return setErrorState("PRICE: Enter only numbers, not currency symbols!")
+		}
 		setLoading(true)
 		let responseData
 		let product = productDetails
@@ -39,7 +46,7 @@ const AddProduct = () => {
 		let formData = new FormData()
 		formData.append("product", image)
 
-		await fetch("https://onlinestore-backend-hjyg.onrender.com/upload", {
+		await fetch(`${backendUrl}/upload`, {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
@@ -50,7 +57,7 @@ const AddProduct = () => {
 		if (responseData.success) {
 			product.image = responseData.image_url
 			product.imageID = responseData.image_id
-			await fetch("https://onlinestore-backend-hjyg.onrender.com/addproduct", {
+			await fetch(`${backendUrl}/addproduct`, {
 				method: "POST",
 				headers: {
 					Accept: "application/json",
@@ -107,4 +114,4 @@ const AddProduct = () => {
 	)
 }
 
-export default AddProduct
+export default React.memo(AddProduct) 

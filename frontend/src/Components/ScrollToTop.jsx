@@ -13,4 +13,4 @@ const ScrollToTop = () => {
     return null
 }
 
-export default ScrollToTop
+export default React.memo(ScrollToTop) 

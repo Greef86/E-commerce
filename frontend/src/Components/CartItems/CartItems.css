@@ -38,6 +38,8 @@
 	width: 10em;
 	height: 4em;
 	overflow: hidden;
+	display: flex;
+	align-items: center;
 }
 
 .same-width {

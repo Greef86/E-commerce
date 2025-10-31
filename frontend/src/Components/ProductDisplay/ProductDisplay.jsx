@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import "./ProductDisplay.css"
 import { FaStar, FaRegStar } from 'react-icons/fa'
 import { ShopContext } from '../../Context/ShopContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ProductDisplay = (props) => {
 
@@ -11,7 +11,6 @@ const ProductDisplay = (props) => {
 	const [size, setSize] = useState("")
 	const [errorState, setErrorState] = useState(null)
 	const [successState, setSuccessState] = useState(null)
-	const toLogIn = useNavigate()
 
 	const addProduct = (productId, productSize) => {
 		if (productSize === "") {
@@ -111,8 +110,7 @@ const ProductDisplay = (props) => {
 					</div>
 					{errorState && <p style={{ color: "red", backgroundColor: "white" }}>{errorState}</p>}
 					{successState && <p style={{ color: "green", backgroundColor: "yellow" }}>{successState}</p>}
-					{localStorage.getItem("auth-token") ? <button onClick={() => addProduct(product.id, size)} className='addToCartBtn'>ADD TO CART</button> :
-						<button onClick={() => toLogIn("/login")} className='addToCartBtn'>Register / Login</button>}
+					<button onClick={() => addProduct(product.id, size)} className='addToCartBtn'>ADD TO CART</button>
 					<p className='productdisplay-right-category'><span>Category : </span>{product.category}</p>
 					<p className='productdisplay-right-category'><span>Tags : </span>Modern, Latest</p>
 				</div>

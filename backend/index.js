@@ -1,15 +1,11 @@
 const port = process.env.PORT || 4000
 const express = require("express")
 const mongoose = require("mongoose")
-const jwt = require("jsonwebtoken")
 const multer = require("multer")
-const path = require("path")
 const cors = require("cors")
-const { type } = require("os")
 require("dotenv").config()
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 const cloudinary = require("./utils/cloudinary")
-const bcrypt = require("bcryptjs")
 const app = express()
 
 app.use(express.json())
@@ -17,6 +13,7 @@ app.use(cors())
 
 //Database Connection With MongoDB
 //"mongodb+srv://greeflesley7:860214Ml@cluster0.ekwcero.mongodb.net/e-commerce"
+//mongodb://127.0.0.1:27017/OnlineStore
 mongoose.connect(process.env.MONGOOSE_CONNECTION_STRING)
 
 //API Creation
@@ -32,11 +29,12 @@ app.post("/create-checkout-session", async(req, res) => {
 			currency: "zar",
 			product_data: {
 				name: product.name,
-				images: [product.image]
+				images: [product.image],
+                size: product.size
 			},
-			unit_amount: Math.round(product.price*100)
+			unit_amount: Math.round(product.new_price*product.count*100)
 		},
-		quantity: product.quantity
+		quantity: product.count
 	}))
 	const session = await stripe.checkout.sessions.create({
 		payment_method_types: ["card"],
@@ -67,7 +65,7 @@ const upload = multer({storage: storage})
 // app.use("/images", express.static("upload/images"))
 
 app.post("/upload", upload.single("product"), (req, res) => {
-
+    //return res.status(200).json({success: true, image_url: "ImageUrl", image_id: "ImageId"})
 	cloudinary.uploader.upload(req.file.path, (err, result) => {
 		if(err){
 			console.log(err)
@@ -131,16 +129,6 @@ app.post("/removeproduct", async (req, res) => {
 
 	const imageUrl = deletedDocument.imageID
 	await cloudinary.uploader.destroy(imageUrl)
-	
-	let userData = await Users.find()
-	for(let i = 0; i < userData.length; i++){
-		while(userData[i].cartData[req.body.id].quantity !== 0){
-			if(userData[i].cartData[req.body.id].quantity > 0)
-			userData[i].cartData[req.body.id].quantity -= 1
-			userData[i].cartData[req.body.id].size.pop() 
-			await Users.findOneAndUpdate({_id: userData[i].id}, {cartData: userData[i].cartData})
-		}
-	}
 
     console.log("Removed")
     res.json({
@@ -155,158 +143,18 @@ app.get("/allproducts", async (req, res) => {
     return res.status(200).json(products)
 })
 
-//Schema creation for user model
-const Users = mongoose.model("Users", {
-    name: {type: String},
-    email: {type: String, unique: true},
-    password: {type: String},
-	isVerified: {type: Boolean, default: false},
-	verificationCode: {type: String},
-    cartData: {type: Object},
-    date: {type: Date, default: Date.now}
-})
-
-//Creating endpoint for registering the user
-app.post("/signup", async (req, res) => {
-	if(!req.body.username || !req.body.email || !req.body.password){
-		return res.status(400).json({success: false, errors: "All fields are required!"})
-	}
-    let check = await Users.findOne({email: req.body.email})
-    if(check){
-        return res.status(400).json({success: false, errors: "Existing user found with same email address!"})
-    }
-    let cart = {}
-    for(let i = 0; i < 300; i++){
-        cart[i] = {quantity: 0, size: []}
-    }
-	const salt = await bcrypt.genSalt()
-	const hashedPassword = await bcrypt.hash(req.body.password, salt)
-    const user = new Users({
-        name: req.body.username,
-        email: req.body.email,
-        password: hashedPassword,
-		verificationCode: verificationCode,
-        cartData: cart,
-    })
-    await user.save()
-    const data = {
-        user: {
-            id: user.id
-        }
-    }
-    const token = jwt.sign(data, "secret_ecom")
-    res.json({success: true, token})
-})
-
-app.delete("/destroy-user", async (req, res) => {
-	try {
-		console.log(req.body.email)
-		await Users.findOneAndDelete({email: req.body.email})
-		return res.status(200).json("User Deleted Successfully")
-	} catch (error) {
-		return res.status(500).json({success: false, errors: error.message})
-	}
-})
-
-app.delete("/delete-useless-data", async(req, res) => {
-	try {
-		await Users.deleteMany({isVerified: false})
-		return res.status(200).json("Useless data is deleted")
-	} catch (error) {
-		return res.status(500).json({success: false, errors: error.message})
-	}
-})
-
-//Creating endpoint for user login
-app.post("/login", async (req, res) => {
-	if(!req.body.email || !req.body.password){
-		return res.status(400).json({success: false, errors: "All fields are required!"})
-	}
-    let user = await Users.findOne({email: req.body.email, isVerified: true}) 
-	if(!user){return res.status(400).json({success: false, errors: "Incorrect email or password!"})}
-    if(user){
-        const passwordCompare = await bcrypt.compare(req.body.password, user.password) //req.body.password === user.password
-        if(passwordCompare){
-            const data = {
-                user: {
-                    id: user.id
-                }
-            }
-            const token = jwt.sign(data, "secret_ecom")
-            res.json({success: true, token})
-        }else{
-            res.status(400).json({success: false, errors: "Incorrect password!"})
-        }
-    }else{
-        res.status(400).json({success: false, errors: "Incorrect email address!"})
-    }
-})
-
 //Creating new endpoint for new collection's data
 app.get("/newcollection", async (req, res) => {
     let products = await Product.find({})
     let newcollection = products.slice(1).slice(-8)
-    // console.log("New Collection Fetched!")
     res.send(newcollection)
 })
 
-//Creating middleware to fetch user
-const fetchUser = async (req, res, next) => {
-    const token = req.header("auth-token")
-    if(!token){
-        res.status(401).send({errors: "Please authenticate using valid token!"})
-    }else{
-        try {
-            const data = jwt.verify(token, "secret_ecom")
-            req.user = data.user
-            next()
-        } catch (error) {
-            res.status(401).send({errors: "Please authenticate using valid token!"})
-        }
-    }
-}
-
 //Creating endpoint for adding data in cart
-app.post("/addtocart", fetchUser, async (req, res) => {
-    console.log("Added", req.body.itemId)
-    let userData = await Users.findOne({_id: req.user.id})
-    userData.cartData[req.body.itemId].quantity += 1
-	userData.cartData[req.body.itemId].size.push(req.body.size)  
-    await Users.findOneAndUpdate({_id: req.user.id}, {cartData: userData.cartData})
-	return res.status(200).json("added")
-})
-
-//Creating endpoint to remove product from cart data
-app.post("/removefromcart", fetchUser, async (req, res) => {
-    console.log("Removed", req.body.itemId)
-    let userData = await Users.findOne({_id: req.user.id})
-    if(userData.cartData[req.body.itemId].quantity > 0)
-    userData.cartData[req.body.itemId].quantity -= 1
-	userData.cartData[req.body.itemId].size.pop() 
-    await Users.findOneAndUpdate({_id: req.user.id}, {cartData: userData.cartData})
-	return res.status(200).json("removed")
-})
-
-//Creating endpoint to clear cart
-app.post("/clearcart", fetchUser, async (req, res) => {
-	let userData = await Users.findOne({_id: req.user.id})
-	for(let i = 0; i < req.body.cartitems.length; i++){
-		userData.cartData[req.body.cartitems[i].productId].quantity = 0
-		userData.cartData[req.body.cartitems[i].productId].size = []
-	}
-    await Users.findOneAndUpdate({_id: req.user.id}, {cartData: userData.cartData})
-	return res.status(200).json("cart cleared")
-})
-
-//Creating endpoint to get cart data
-app.post("/getcart", fetchUser, async (req, res) => {
-    console.log("GetCart")
-    let userData = await Users.findOne({_id: req.user.id, isVerified: true})
-	if(!userData){
-		return res.status(404).json({success: false, errors: "No User Found"})
-	}else{
-		return res.status(200).json(userData.cartData)
-	}
+app.post("/addtocart", async (req, res) => {
+    const product = await Product.findOne({id: req.body.itemId})
+    const productWithSize = {...product.toObject(), size: req.body.size}
+	return res.status(200).json(productWithSize)
 })
 
 app.listen(port, (error) => {

@@ -1,107 +1,76 @@
 import React, { createContext, useState, useEffect } from 'react'
+import {backendUrl} from "../Constants"
 //I will remove this
 // import all_product from "../Components/Assets/all_product"
 
 export const ShopContext = createContext(null)
 
-const getDefaultCart = () => {
-	let cart = {}
-	for (let index = 0; index < 300 + 1; index++) {
-		cart[index] = 0
-	}
-	return cart
-}
-
 const ShopContextProvider = (props) => {
-
+											
 	const [all_product, setAll_product] = useState([])
-	const [cartItems, setCartItems] = useState(getDefaultCart())
+	const [cartItems, setCartItems] = useState([])
 
-	console.log(cartItems)
-
-	useEffect(() => { 
-		fetch("https://onlinestore-backend-hjyg.onrender.com/allproducts").then((response) => response.json()).then((data) => setAll_product(data))
-		if (localStorage.getItem("auth-token")) {
-			fetch("https://onlinestore-backend-hjyg.onrender.com/getcart", {
-				method: "POST",
-				headers: {
-					Accept: "application/form-data",
-					"auth-token": `${localStorage.getItem("auth-token")}`,
-					"Content-Type": "application/json",
-				},
-				body: ""
-			}).then((response) => response.json()).then((data) => setCartItems(data)).catch((data) => console.log(data.errors))
+	useEffect(() => {
+		const storedArr = localStorage.getItem("CartItems")
+		if(storedArr){
+			setCartItems(JSON.parse(storedArr))
+		}else{
+			localStorage.setItem("CartItems", JSON.stringify([]))
 		}
 	}, [])
 
-	useEffect(() => {
-		fetch("https://onlinestore-backend-hjyg.onrender.com/delete-useless-data", {
-			method: "DELETE"
-		}).then((response) => response.json()).then((data) => console.log(data))
+	useEffect(() => { 
+		fetch(`${backendUrl}/allproducts`).then((response) => response.json()).then((data) => setAll_product(data))
 	}, [])
 
 	const addToCart = (itemId, size) => {
-		setCartItems((prev) => ({ ...prev, [itemId]: { quantity: prev[itemId].quantity + 1, size: [...prev[itemId].size, size] } }))
-		if (localStorage.getItem("auth-token")) {
-			fetch("https://onlinestore-backend-hjyg.onrender.com/addtocart", {
-				method: "POST",
-				headers: {
-					Accept: "application/form-data",
-					"auth-token": `${localStorage.getItem("auth-token")}`,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ itemId, size }),
-			}).then((response) => response.json()).then((data) => console.log(data))
+		fetch(`${backendUrl}/addtocart`, {
+			method: "POST",
+			headers: {
+				Accept: "application/form-data",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ itemId, size }),
+		}).then((response) => response.json()).then((data) => {
+			const newArr = [...cartItems, data]
+			setCartItems(newArr)
+			localStorage.setItem("CartItems", JSON.stringify(newArr))
+		})
+	}
+
+	const removeFromCart = (itemId, size) => {
+		const storedArr = JSON.parse(localStorage.getItem("CartItems"))
+		if(storedArr?.length > 0){
+			for(let item of storedArr){
+				if(`${item.id},${item.size}` === `${itemId},${size}`){
+					storedArr.splice(storedArr.indexOf(item), 1)
+
+					setCartItems(storedArr)
+					localStorage.setItem("CartItems", JSON.stringify(storedArr))
+					return
+				}
+			}
 		}
 	}
 
-	const removeFromCart = (itemId) => {
-		cartItems[itemId].size.pop()
-		setCartItems((prev) => ({ ...prev, [itemId]: { quantity: prev[itemId].quantity - 1, size: [...cartItems[itemId].size] } }))
-		if (localStorage.getItem("auth-token")) {
-			fetch("https://onlinestore-backend-hjyg.onrender.com/removefromcart", {
-				method: "POST",
-				headers: {
-					Accept: "application/form-data",
-					"auth-token": `${localStorage.getItem("auth-token")}`,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ "itemId": itemId }),
-			}).then((response) => response.json()).then((data) => console.log(data))
-		}
-	}
-
-	const clearCart = (cartitems) => {
-		if (localStorage.getItem("auth-token")) {
-			fetch("https://onlinestore-backend-hjyg.onrender.com/clearcart", {
-				method: "POST",
-				headers: {
-					Accept: "application/form-data",
-					"auth-token": `${localStorage.getItem("auth-token")}`,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ cartitems }),
-			}).then((response) => response.json()).then((data) => console.log(data))
-		}
+	const clearCart = () => {
+		setCartItems([])
+		localStorage.setItem("CartItems", JSON.stringify([]))
 	}
 
 	const getTotalCartAmount = () => {
 		let totalAmount = 0
-		for (const item in cartItems) {
-			if (cartItems[item].quantity > 0) {
-				let itemInfo = all_product.find((product) => product.id === Number(item))
-				totalAmount += itemInfo.new_price * cartItems[item].quantity
-			}
+		for (const item of cartItems) {
+			totalAmount += item.new_price
 		}
 		return totalAmount
 	}
 
 	const getTotalCartItems = () => {
 		let totalItem = 0
-		for (const item in cartItems) {
-			if (cartItems[item].quantity > 0) {
-				totalItem += cartItems[item].quantity
-			}
+		const storedArr = JSON.parse(localStorage.getItem("CartItems"))
+		if(storedArr?.length > 0){
+			return storedArr.length
 		}
 		return totalItem
 	}
