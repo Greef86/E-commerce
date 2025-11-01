@@ -30,7 +30,9 @@ app.post("/create-checkout-session", async(req, res) => {
 			product_data: {
 				name: product.name,
 				images: [product.image],
-                size: product.size
+                metadata: {
+                    size: product.size, 
+                },
 			},
 			unit_amount: Math.round(product.new_price*product.count*100)
 		},
