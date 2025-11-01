@@ -12,8 +12,6 @@ app.use(express.json())
 app.use(cors())
 
 //Database Connection With MongoDB
-//"mongodb+srv://greeflesley7:860214Ml@cluster0.ekwcero.mongodb.net/e-commerce"
-//mongodb://127.0.0.1:27017/OnlineStore
 mongoose.connect(process.env.MONGOOSE_CONNECTION_STRING)
 
 //API Creation
