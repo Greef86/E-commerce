@@ -9,7 +9,9 @@ const cloudinary = require("./utils/cloudinary")
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ["https://greeftechnologies.netlify.app"]
+}))
 
 //Database Connection With MongoDB
 mongoose.connect(process.env.MONGOOSE_CONNECTION_STRING)
