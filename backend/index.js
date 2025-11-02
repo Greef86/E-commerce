@@ -142,6 +142,7 @@ app.post("/removeproduct", async (req, res) => {
 //API For Getting All Products
 app.get("/allproducts", async (req, res) => {
     let products = await Product.find({})
+    console.log(products)
     return res.status(200).json(products)
 })
 
