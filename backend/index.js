@@ -10,7 +10,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: ["https://greeftechnologies.netlify.app"]
+    origin: ["https://greeftechnologies.netlify.app", "https://online-store-admin.netlify.app"]
 }))
 
 //Database Connection With MongoDB
